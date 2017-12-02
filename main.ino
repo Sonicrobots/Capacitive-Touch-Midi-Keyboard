@@ -2,10 +2,17 @@
 #include <Wire.h> // include I2C library
 #include <i2c_touch_sensor.h>
 
-// include our Grove I2C touch sensor library
-// initialize the Grove I2C touch sensor
-// IMPORTANT: in this case, INT pin was connected to pin7 of the Arduino
-// (this is the interrupt pin)
+/////////////////////////////////////////////////////
+// ------------- Sonicrobots 2017  ---------------///
+//-------- www.learning.sonicrobots.com ----------///
+/////////////////////////////////////////////////////
+// Capacitive Touch Midi Keyboard
+// Grove I2C Touch Sensor Midi keyboard
+// Create a Midi keyboard with 4 buttons with the Seedstudio Grove Kit touch sensor.
+// * It uses the USB MIDI Library with an Arduino Leonardo,
+// * The Arduino USB interface can be used directly as an MIDI Interface
+// http://wiki.seeed.cc/Grove-I2C_Touch_Sensor/
+// https://www.arduino.cc/en/Reference/MIDIUSB
 
 i2ctouchsensor touchsensor; // keep track of 4 pads' states
 
@@ -65,6 +72,11 @@ void loop() {
           case 3:
 
           noteOn(0, 56, 64);   // Channel 0, middle C, normal velocity
+          MidiUSB.flush();
+          break;
+          case 4:
+
+          noteOn(0, 57, 64);   // Channel 0, middle C, normal velocity
           MidiUSB.flush();
           break;
         }
